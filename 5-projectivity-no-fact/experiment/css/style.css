@@ -4,22 +4,26 @@ This stuff can be ported from experiment to experiment.*/
 
 /** We want the page to sit flush inside the browser window - that means no margins or padding. Also, use a nice-looking serif font. */
 body {
-	padding: 20;
-	margin: 20;
-	font-family: Palatino Linotype, Bookman Antiqua, Palatino, serif;
-	font-size: 16px;
-	line-height: 20px;
-	text-align: center;
-	width: 95%;
-	height: 95%;
+  padding: 20;
+  margin: 20;
+  font-family:
+    Palatino Linotype,
+    Bookman Antiqua,
+    Palatino,
+    serif;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  width: 95%;
+  height: 95%;
 }
 
 canvas {
-    height: 600;
-    width: 950;
-	width: 100%;
-	height: 100%;
- align: center;
+  height: 600;
+  width: 950;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
 table {
@@ -28,42 +32,47 @@ table {
 
 .slide {
   text-align: center;
-	width: 90%;
-	height: 90%;
-	display: none;
-	position: absolute;
-	margin: 0.5%;
-	margin-left: 0.5%;
-	padding: 1% 2% 1% 2%;
+  width: 90%;
+  height: 90%;
+  display: none;
+  position: absolute;
+  margin: 0.5%;
+  margin-left: 0.5%;
+  padding: 1% 2% 1% 2%;
 }
 
-input, select, button {font-family: Georgia, serif; font-size: 14px;}
+input,
+select,
+button {
+  font-family: Georgia, serif;
+  font-size: 14px;
+}
 
 button {
-	background: url(button-gradient.png);
-	border: 1px solid #999;
-	border-top: 1px solid #e0e0e0;
-	border-left: 1px solid #e0e0e0;
-	margin: 10px;
-	padding-left: 5px;
-	padding-right: 5px;
-	height: 29px;
-	min-width: 70px;
+  background: url(button-gradient.png);
+  border: 1px solid #999;
+  border-top: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 29px;
+  min-width: 70px;
 }
 
 button:active {
-	border-left: 1px solid #c9c9c9;
-	border-top: 1px solid #c9c9c9;
-	background: none;
-	background-color: #c9c9c9;
+  border-left: 1px solid #c9c9c9;
+  border-top: 1px solid #c9c9c9;
+  background: none;
+  background-color: #c9c9c9;
 }
 
 button[disabled] {
-	background: url(zen-button.png);
-	border: 1px solid #999;
-	border-top: 1px solid #e0e0e0;
-	border-left: 1px solid #e0e0e0;
-	cursor: not-allowed;
+  background: url(zen-button.png);
+  border: 1px solid #999;
+  border-top: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  cursor: not-allowed;
 }
 
 /**
@@ -72,23 +81,23 @@ This stuff will vary by experiment.
 */
 
 #centered {
-    text-align: center;
+  text-align: center;
 }
 
 #intro {
-    text-align: left;
+  text-align: left;
 }
 
 #stage {
-    text-align: center;
+  text-align: center;
 }
 
 form {
-    text-align: center;
+  text-align: center;
 }
 
 .reponse {
-    text-align: center;
+  text-align: center;
 }
 
 #logo-text {
@@ -107,134 +116,128 @@ form {
 }
 
 .sliderlabel {
-	font-size: 10px;
+  font-size: 10px;
 }
 
 .answertext {
   display: inline-block;
-  float: left;
   width: 100px;
 }
 
 .leftbutton {
-	display: inline-block;
-	float: left;
+  display: inline-block;
 }
 
 .answerradio {
   display: inline-block;
-  float: left;
   width: 500px;
 }
 
-
 #legal {
+  text-align: justify;
   margin: 0 auto;
+  padding: 200px;
+  padding-top: 30px;
   margin-top: 1.5em;
   font-size: 0.8em;
 }
 
 /* prog bar */
-.progress{
-    float:right;
+.progress {
+  float: right;
 }
 
-.progress span{
-    position:relative;
-    top: -6px;
+.progress span {
+  position: relative;
+  top: -6px;
 }
 
-.bar-wrapper{
-    height:20px;
-    width:200px;
-    border:1px solid #000000;
-    display:inline-block;
+.bar-wrapper {
+  height: 20px;
+  width: 200px;
+  border: 1px solid #000000;
+  display: inline-block;
 }
 
-.bar{
-    position:relative;
-    height:100%;
-    width:0px;
-    background-color:#000000
+.bar {
+  position: relative;
+  height: 100%;
+  width: 0px;
+  background-color: #000000;
 }
 
 /* marble bowls*/
 .canvasbowl {
-    align: center;
-    height: 120;
-    width: 150;
-	/*border: 1px solid LightGray;*/
+  text-align: center;
+  height: 120;
+  width: 150;
+  /*border: 1px solid LightGray;*/
 }
 
 .bowltd {
-	border: 1px solid LightGray;	
+  border: 1px solid LightGray;
 }
 
 .utttd {
-	padding-bottom: 0.25em;
-	padding-top: 0.25em;	
-	padding-right: 0.1em;
-	vertical-align: center;
-	width: 150px;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  padding-right: 0.1em;
+  vertical-align: center;
+  width: 150px;
 }
 
 .qslidy {
-	vertical-align: center;
+  vertical-align: center;
 }
 
 .utterance {
-	font-size: 20px;	
+  font-size: 20px;
 }
 
 .sliderLabel {
-	font-size: 12px;
+  font-size: 12px;
 }
 
-
-#qudy0 { 
-	width: 150px;
-	height: 15px;
-	position: relative;
+#qudy0 {
+  width: 150px;
+  height: 15px;
+  position: relative;
 }
-               
+
 #qudy0 .ui-slider-handle {
-	height: 23px;
-	width: 10px;
+  height: 23px;
+  width: 10px;
 }
 
-#qudy1 { 
-	width: 150px;
-	height: 15px;
-	position: relative;
+#qudy1 {
+  width: 150px;
+  height: 15px;
+  position: relative;
 }
-               
+
 #qudy1 .ui-slider-handle {
-	height: 23px;
-	width: 10px;
+  height: 23px;
+  width: 10px;
 }
 
-#qudy2 { 
-	width: 150px;
-	height: 15px;
-	position: relative;
+#qudy2 {
+  width: 150px;
+  height: 15px;
+  position: relative;
 }
-               
+
 #qudy2 .ui-slider-handle {
-	height: 23px;
-	width: 10px;
+  height: 23px;
+  width: 10px;
 }
 
-#qudy3 { 
-	width: 150px;
-	height: 15px;
-	position: relative;
+#qudy3 {
+  width: 150px;
+  height: 15px;
+  position: relative;
 }
-               
+
 #qudy3 .ui-slider-handle {
-	height: 23px;
-	width: 10px;
+  height: 23px;
+  width: 10px;
 }
-
-
-
-               
