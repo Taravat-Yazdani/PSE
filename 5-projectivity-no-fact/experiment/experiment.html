@@ -177,12 +177,10 @@ complete. <br> </p>
         <label><option value="1" >No</option></label>
       </select>
  -->
-      
-      <p class="info"></p>
-      <p>Did you read the instructions and do you think you did the experiment correctly</p>
-      <label><input type="radio"  name="assess" value="Yes"/>Yes</label>
-      <label><input type="radio"  name="assess" value="Confused"/>I was confused</label>
-      <label><input type="radio"  name="assess" value="No"/>No</label>
+      <p>Did you read the instructions and do you think you did the experiment correctly?</p>
+      <label><input type="radio" name="assess" value="Yes">Yes</label>
+      <label><input type="radio" name="assess" value="Confused">I was confused</label>
+    <label><input type="radio" name="assess" value="No">No</label>
 
 
       <!-- 
@@ -210,22 +208,21 @@ complete. <br> </p>
       <p align="left"> Were there any problems or bugs in the experiment? <input type="text" id="problems"/></p>
       <p class="info" ></p>
       <p>Level of education: </p>
-      <label><input type="radio"  name="assess" value="Some High School"/>Some High School</label>
-      <label><input type="radio"  name="assess" value="Graduated High School"/>Graduated High School</label>
-      <label><input type="radio"  name="assess" value="Some College"/>Some College</label>
-      <label><input type="radio"  name="assess" value="Graduated College"/>Graduated College</label>
-      <label><input type="radio"  name="assess" value="Hold a higher degree"/>Hold a higher degree</label>
+      <p>Level of education:</p>
+      <label><input type="radio" name="education" value="Some High School">Some High School</label>
+      <label><input type="radio" name="education" value="Graduated High School">Graduated High School</label>
+      <label><input type="radio" name="education" value="Some College">Some College</label>
+      <label><input type="radio" name="education" value="Graduated College">Graduated College</label>
+      <label><input type="radio" name="education" value="Hold a higher degree">Hold a higher degree</label>
       <p class="info"></p>
 
       <p class="info"></p>
-      <p>Did you enjoy the experiment? </p>
-      <div class="education">
-      
-      <label><input type="radio"  name="assess" value="Yes"/>Yes</label>
-      <label><input type="radio"  name="assess" value="It was fine"/>It was fine</label>
-      <label><input type="radio"  name="assess" value="No"/>No</label>
+      <p>Did you enjoy the experiment?</p>
+      <label><input type="radio" name="enjoyment" value="Yes">Yes</label>
+      <label><input type="radio" name="enjoyment" value="It was fine">It was fine</label>
+      <label><input type="radio" name="enjoyment" value="No">No</label>
       </div>
-<p align="left">We would be interested in any comments you have about this experiment. Please type them here:</p>
+      <p align="left">We would be interested in any comments you have about this experiment. Please type them here:</p>
       <textarea id="comments" rows="3" cols="50"></textarea>
       <br/>
       <button onclick="_s.submit()">Submit</button>

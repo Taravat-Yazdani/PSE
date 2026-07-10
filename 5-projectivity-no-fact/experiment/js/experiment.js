@@ -9,12 +9,12 @@ function make_slides(f) {
   });
 
   slides.consent = slide({
-  name: "consent",
+    name: "consent",
 
-  button: function () {
-    exp.go();
-  },
-});
+    button: function () {
+      exp.go();
+    },
+  });
 
   slides.instructions = slide({
     name: "instructions",
@@ -142,38 +142,36 @@ function make_slides(f) {
       //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
       exp.subj_data = {
         language: $("#language").val(),
-        //        enjoyment : $("#enjoyment").val(),
         assess: $('input[name="assess"]:checked').val(),
+        education: $('input[name="education"]:checked').val(),
+        enjoyment: $('input[name="enjoyment"]:checked').val(),
         american: $('input[name="american"]:checked').val(),
         gender: $('input[name="gender"]:checked').val(),
-        //american : $("#american").val(),
-        //american : $('input[name="american"]:checked').val(),
         age: $("#age").val(),
-        //gender : $("#gender").val(),
-        //        education : $("#education").val(),
+        problems: $("#problems").val(),
         comments: $("#comments").val(),
       };
       exp.go(); //use exp.go() if and only if there is no "present" data.
     },
   });
 
-slides.finished = slide({
-  name: "finished",
-  start: function () {
-    exp.data = {
-      trials: exp.data_trials,
-      catch_trials: exp.catch_trials,
-      system: exp.system,
-      condition: exp.condition,
-      subject_information: exp.subj_data,
-      time_in_minutes: (Date.now() - exp.startT) / 60000,
-    };
+  slides.finished = slide({
+    name: "finished",
+    start: function () {
+      exp.data = {
+        trials: exp.data_trials,
+        catch_trials: exp.catch_trials,
+        system: exp.system,
+        condition: exp.condition,
+        subject_information: exp.subj_data,
+        time_in_minutes: (Date.now() - exp.startT) / 60000,
+      };
 
-    setTimeout(function () {
-      proliferate.submit(exp.data);
-    }, 1000);
-  },
-});
+      setTimeout(function () {
+        proliferate.submit(exp.data);
+      }, 1000);
+    },
+  });
 
   return slides;
 }
@@ -1266,7 +1264,7 @@ function init() {
     screenUW: exp.width,
   };
   //blocks of the experiment:
-  exp.structure = ["i0",  "consent", "block1", "questionaire", "finished"];
+  exp.structure = ["i0", "consent", "block1", "questionaire", "finished"];
 
   exp.data_trials = [];
   //make corresponding slides:
