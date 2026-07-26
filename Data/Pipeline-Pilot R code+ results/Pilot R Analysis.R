@@ -1,6 +1,8 @@
 #Installing and calling necessary packages
 install.packages("tidyverse")
 library(tidyverse)
+install.packages("patchwork")
+library(patchwork)
 
 #Reading the merged file 
 data_raw <- read_csv(
@@ -650,28 +652,6 @@ boundedness_summary <- boundedness_summary %>%
     )
   )
 
-#Checking the final predicate order
-levels(
-  participant_boundedness_data$verb
-)
-
-#Checking the means before plotting
-boundedness_summary %>%
-  arrange(
-    verb,
-    boundedness
-  ) %>%
-  select(
-    verb,
-    boundedness,
-    predicate_type,
-    mean_certainty,
-    lower_ci,
-    upper_ci
-  ) %>%
-  print(
-    n = Inf
-  )
 
 #Creating Figure 2
 figure2 <- ggplot(
@@ -895,4 +875,809 @@ ggsave(
   width = 11,
   height = 8,
   dpi = 300
+)
+
+
+
+#-------------------------------------------------------------------
+# Figures 3 & 4:
+# Mean certainty by predicate, boundedness, and scale
+#-------------------------------------------------------------------
+
+# figure2_data already contains:
+# workerid
+# verb
+# response
+# probe_text
+# predicate_type
+#
+# It also already contains the corrected verb name "inform"
+# and numeric response values.
+
+
+#-------------------------------------------------------------------
+# 1. Creating separate boundedness and scale variables
+#-------------------------------------------------------------------
+
+figure34_data <- figure2_data %>%
+  transmute(
+    workerid,
+    verb = as.character(verb),
+    response = as.numeric(response),
+    probe_text,
+    predicate_type,
+    
+    #Coding the type of scale
+    scale = case_when(
+      
+      #Main-clause controls do not have a scalar expression
+      verb == "control" ~
+        "Control",
+      
+      #Disjunction scale
+      str_detect(
+        probe_text,
+        regex(
+          "but not both|and possibly both",
+          ignore_case = TRUE
+        )
+      ) ~
+        "Disjunction",
+      
+      #Quantifier 'some' scale
+      str_detect(
+        probe_text,
+        regex(
+          "but not all of them|and possibly all of them",
+          ignore_case = TRUE
+        )
+      ) ~
+        "Some",
+      
+      TRUE ~ NA_character_
+    ),
+    
+    #Coding boundedness separately from scale
+    boundedness = case_when(
+      
+      #Main-clause controls have no boundedness manipulation
+      verb == "control" ~
+        "Control",
+      
+      #Upper-bounded probes for either scale
+      str_detect(
+        probe_text,
+        regex(
+          "but not both|but not all of them",
+          ignore_case = TRUE
+        )
+      ) ~
+        "Upper-bounded",
+      
+      #Lower-bounded probes for either scale
+      str_detect(
+        probe_text,
+        regex(
+          "and possibly both|and possibly all of them",
+          ignore_case = TRUE
+        )
+      ) ~
+        "Lower-bounded",
+      
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  
+  #Removing rows that cannot be used in these figures
+  filter(
+    !is.na(workerid),
+    !is.na(verb),
+    !is.na(response),
+    !is.na(predicate_type),
+    !is.na(scale),
+    !is.na(boundedness)
+  ) %>%
+  
+  #Giving scale and boundedness a consistent order
+  mutate(
+    scale = factor(
+      scale,
+      levels = c(
+        "Control",
+        "Disjunction",
+        "Some"
+      )
+    ),
+    
+    boundedness = factor(
+      boundedness,
+      levels = c(
+        "Control",
+        "Upper-bounded",
+        "Lower-bounded"
+      )
+    )
+  )
+
+
+#-------------------------------------------------------------------
+# 3. Function for preparing and plotting one scale
+#-------------------------------------------------------------------
+#
+#This function performs the same operations for both scales:
+#1. Keeps the selected scale and the controls
+#2. Calculates participant-level means
+#3. Calculates condition means
+#4. Calculates bootstrapped confidence intervals
+#5. Orders predicates by the upper-bounded mean
+#6. Creates the violin plot
+
+make_boundedness_scale_plot <- function(
+    data,
+    selected_scale,
+    figure_number,
+    caption_scale
+) {
+  
+  #---------------------------------------------------------------
+  #Keeping one scale and the main-clause controls
+  #---------------------------------------------------------------
+  
+  scale_plot_data <- data %>%
+    filter(
+      scale %in% c(
+        "Control",
+        selected_scale
+      )
+    )
+  
+  
+  #---------------------------------------------------------------
+  #Calculating participant-level means
+  #---------------------------------------------------------------
+  
+  participant_scale_data <- scale_plot_data %>%
+    group_by(
+      workerid,
+      verb,
+      predicate_type,
+      boundedness
+    ) %>%
+    summarise(
+      participant_rating = mean(
+        response,
+        na.rm = TRUE
+      ),
+      
+      .groups = "drop"
+    )
+  
+  
+  #---------------------------------------------------------------
+  #Calculating the overall mean for each condition
+  #---------------------------------------------------------------
+  
+  scale_summary <- participant_scale_data %>%
+    group_by(
+      verb,
+      predicate_type,
+      boundedness
+    ) %>%
+    summarise(
+      mean_certainty = mean(
+        participant_rating,
+        na.rm = TRUE
+      ),
+      
+      number_of_participants = n_distinct(
+        workerid
+      ),
+      
+      .groups = "drop"
+    )
+  
+  
+  #---------------------------------------------------------------
+  #Calculating 95% bootstrapped confidence intervals
+  #---------------------------------------------------------------
+  
+  #Using a different but reproducible seed for each figure
+  set.seed(
+    2026 + figure_number
+  )
+  
+  scale_bootstrap_ci <- participant_scale_data %>%
+    group_by(
+      verb,
+      predicate_type,
+      boundedness
+    ) %>%
+    group_modify(
+      ~ bootstrap_mean_ci(
+        .x$participant_rating,
+        number_of_bootstraps = 5000
+      )
+    ) %>%
+    ungroup()
+  
+  
+  #Combining the means and confidence intervals
+  scale_summary <- scale_summary %>%
+    left_join(
+      scale_bootstrap_ci,
+      by = c(
+        "verb",
+        "predicate_type",
+        "boundedness"
+      )
+    )
+  
+  
+  #---------------------------------------------------------------
+  #Ordering predicates by their upper-bounded means
+  #---------------------------------------------------------------
+  
+  #Extracting the upper-bounded mean for each non-control predicate
+  upper_mean_table <- scale_summary %>%
+    filter(
+      verb != "control",
+      boundedness == "Upper-bounded"
+    ) %>%
+    select(
+      verb,
+      upper_mean = mean_certainty
+    )
+  
+  
+  #Starting with every predicate that appears for this scale
+  predicate_order_table <- scale_plot_data %>%
+    filter(
+      verb != "control"
+    ) %>%
+    distinct(
+      verb
+    ) %>%
+    
+    #Adding the upper-bounded mean when it is available
+    left_join(
+      upper_mean_table,
+      by = "verb"
+    ) %>%
+    
+    #Predicates with an observed upper-bounded mean are ordered from lowest to highest.
+    #
+    #Predicates without an upper-bounded observation are put last
+    #because they cannot be ordered by an unavailable mean.
+    arrange(
+      is.na(upper_mean),
+      upper_mean,
+      verb
+    )
+  
+  
+  #Finding predicates that do not currently have
+  #an upper-bounded observation
+  missing_upper_predicates <- predicate_order_table %>%
+    filter(
+      is.na(upper_mean)
+    ) %>%
+    pull(
+      verb
+    ) %>%
+    as.character()
+  
+  
+  #Printing an informative message when pilot cells are missing
+  if (
+    length(missing_upper_predicates) > 0
+  ) {
+    
+    message(
+      paste0(
+        "For the ",
+        selected_scale,
+        " scale, no upper-bounded observations were available for: ",
+        paste(
+          missing_upper_predicates,
+          collapse = ", "
+        ),
+        ". These predicates are placed after predicates with observed ",
+        "upper-bounded means."
+      )
+    )
+  }
+  
+  
+  #The control is placed first as the benchmark, and the remaining predicates are ordered by upper-bounded mean.
+  predicate_order <- c(
+    "control",
+    predicate_order_table$verb
+  )
+  
+  
+  #Removing any possible duplicate names
+  predicate_order <- unique(
+    predicate_order
+  )
+  
+  
+  #Applying the predicate order to participant-level data
+  participant_scale_data <- participant_scale_data %>%
+    mutate(
+      verb = factor(
+        as.character(verb),
+        levels = predicate_order
+      )
+    )
+  
+  
+  #Applying the same predicate order to summary data
+  scale_summary <- scale_summary %>%
+    mutate(
+      verb = factor(
+        as.character(verb),
+        levels = predicate_order
+      )
+    )
+  
+  
+  #---------------------------------------------------------------
+  #Creating color groups for the plotted points
+  #---------------------------------------------------------------
+  
+  scale_summary <- scale_summary %>%
+    mutate(
+      point_group = case_when(
+        
+        boundedness == "Control" ~
+          "Main clause controls",
+        
+        boundedness == "Lower-bounded" ~
+          "Lower-bounded",
+        
+        boundedness == "Upper-bounded" &
+          predicate_type == "Nonfactive" ~
+          "Upper-bounded: nonfactive",
+        
+        boundedness == "Upper-bounded" &
+          predicate_type == "Optionally factive" ~
+          "Upper-bounded: optionally factive",
+        
+        boundedness == "Upper-bounded" &
+          predicate_type == "Canonically factive" ~
+          "Upper-bounded: factive",
+        
+        TRUE ~ NA_character_
+      )
+    )
+  
+  
+  #---------------------------------------------------------------
+  #Creating the violin plot
+  #---------------------------------------------------------------
+  
+  scale_plot <- ggplot(
+    participant_scale_data,
+    aes(
+      x = verb,
+      y = participant_rating
+    )
+  ) +
+    
+    #One pooled participant-level distribution per predicate
+    #
+    #Upper- and lower-bounded participant ratings for that scale
+    #are included in the same violin.
+    geom_violin(
+      aes(
+        group = verb
+      ),
+      fill = "white",
+      color = "grey80",
+      linewidth = 0.6,
+      width = 0.85,
+      scale = "width",
+      trim = FALSE
+    ) +
+    
+    #Confidence intervals for control, upper-bounded,
+    #and lower-bounded means
+    geom_errorbar(
+      data = scale_summary,
+      aes(
+        x = verb,
+        ymin = lower_ci,
+        ymax = upper_ci,
+        color = point_group
+      ),
+      inherit.aes = FALSE,
+      width = 0.03,
+      linewidth = 0.35
+    ) +
+    
+    #Lower-bounded means:
+    #green, with predicate-type shapes
+    geom_point(
+      data = scale_summary %>%
+        filter(
+          boundedness == "Lower-bounded"
+        ),
+      aes(
+        x = verb,
+        y = mean_certainty,
+        color = point_group,
+        shape = predicate_type
+      ),
+      inherit.aes = FALSE,
+      size = 2
+    ) +
+    
+    #Upper-bounded means and the control:
+    #larger points with Figure 1 and Figure 2 colors
+    geom_point(
+      data = scale_summary %>%
+        filter(
+          boundedness != "Lower-bounded"
+        ),
+      aes(
+        x = verb,
+        y = mean_certainty,
+        color = point_group,
+        shape = predicate_type
+      ),
+      inherit.aes = FALSE,
+      size = 3
+    ) +
+    
+    #Upper-bounded colors correspond to predicate type.
+    #All lower-bounded means are green.
+    scale_color_manual(
+      values = c(
+        "Main clause controls" = "black",
+        "Upper-bounded: nonfactive" = "grey55",
+        "Upper-bounded: optionally factive" = "#F15A3A",
+        "Upper-bounded: factive" = "#9C39C6",
+        "Lower-bounded" = "#2E8B57"
+      ),
+      
+      breaks = c(
+        "Main clause controls",
+        "Upper-bounded: nonfactive",
+        "Upper-bounded: optionally factive",
+        "Upper-bounded: factive",
+        "Lower-bounded"
+      ),
+      
+      name = "Boundedness and predicate type"
+    ) +
+    
+    #Shapes remain constant across upper- and lower-bounded means
+    scale_shape_manual(
+      values = c(
+        "Control" = 16,
+        "Nonfactive" = 15,
+        "Optionally factive" = 17,
+        "Canonically factive" = 18
+      ),
+      
+      breaks = c(
+        "Control",
+        "Nonfactive",
+        "Optionally factive",
+        "Canonically factive"
+      ),
+      
+      labels = c(
+        "Control" = "main clause controls",
+        "Nonfactive" = "nonfactive",
+        "Optionally factive" = "optionally factive",
+        "Canonically factive" = "factive"
+      ),
+      
+      name = "Predicate type"
+    ) +
+    
+    #Forcing the selected predicate order and displaying the control as MC
+    scale_x_discrete(
+      limits = predicate_order,
+      
+      labels = function(x) {
+        ifelse(
+          x == "control",
+          "MC",
+          x
+        )
+      },
+      
+      drop = FALSE
+    ) +
+    
+    #Showing certainty values between 0 and 1
+    scale_y_continuous(
+      breaks = seq(
+        0,
+        1,
+        by = 0.2
+      ),
+      
+      expand = expansion(
+        mult = c(
+          0.01,
+          0.03
+        )
+      )
+    ) +
+    
+    #Displaying the response range without deleting the violin density outside the plotting window
+    coord_cartesian(
+      ylim = c(
+        0,
+        1
+      )
+    ) +
+    
+    #Axis labels and a separate caption for each plot
+    labs(
+      x = "Predicate",
+      y = "Mean certainty rating",
+      
+      caption = paste0(
+        "Figure ",
+        figure_number,
+        ". Mean certainty ratings by predicate and boundedness ",
+        "for the ",
+        caption_scale,
+        " scale."
+      )
+    ) +
+    
+    theme_classic() +
+    
+    theme(
+      axis.text.x = element_text(
+        angle = 50,
+        hjust = 1,
+        vjust = 1
+      ),
+      
+      axis.title = element_text(
+        size = 13
+      ),
+      
+      axis.text = element_text(
+        size = 10
+      ),
+      
+      legend.title = element_text(
+        size = 10
+      ),
+      
+      legend.text = element_text(
+        size = 9
+      ),
+      
+      legend.position = "bottom",
+      
+      legend.box = "vertical",
+      
+      legend.spacing.x = grid::unit(
+        0.2,
+        "cm"
+      ),
+      
+      legend.spacing.y = grid::unit(
+        0.1,
+        "cm"
+      ),
+      
+      legend.key.width = grid::unit(
+        0.8,
+        "cm"
+      ),
+      
+      legend.key.height = grid::unit(
+        0.55,
+        "cm"
+      ),
+      
+      #Ensuring that each caption appears beneath its own plot
+      plot.caption.position = "plot",
+      
+      plot.caption = element_text(
+        hjust = 0,
+        size = 10,
+        face = "plain",
+        margin = margin(
+          t = 12,
+          b = 8
+        )
+      ),
+      
+      #Adding space around every individual plot
+      plot.margin = margin(
+        t = 12,
+        r = 18,
+        b = 16,
+        l = 18
+      ),
+      
+      panel.border = element_rect(
+        color = "black",
+        fill = NA,
+        linewidth = 0.6
+      )
+    ) +
+    
+    guides(
+      color = guide_legend(
+        title.position = "top",
+        nrow = 2,
+        order = 1
+      ),
+      
+      shape = guide_legend(
+        title.position = "top",
+        nrow = 1,
+        order = 2
+      )
+    )
+  
+  
+  #Returning the plot and the datasets used to construct it
+  list(
+    plot = scale_plot,
+    participant_data = participant_scale_data,
+    summary = scale_summary,
+    predicate_order = predicate_order,
+    missing_upper_predicates = missing_upper_predicates
+  )
+}
+
+
+#-------------------------------------------------------------------
+# 4. Figure 3: Disjunction
+#-------------------------------------------------------------------
+
+figure3_results <- make_boundedness_scale_plot(
+  data = figure34_data,
+  selected_scale = "Disjunction",
+  figure_number = 3,
+  caption_scale = "disjunction"
+)
+
+figure3 <- figure3_results$plot
+
+
+#Displaying Figure 3 separately
+figure3
+
+
+#-------------------------------------------------------------------
+# 5. Figure 4: Quantifier 'some'
+#-------------------------------------------------------------------
+
+figure4_results <- make_boundedness_scale_plot(
+  data = figure34_data,
+  selected_scale = "Some",
+  figure_number = 4,
+  caption_scale = "quantifier 'some'"
+)
+
+figure4 <- figure4_results$plot
+
+#Displaying Figure 4 separately
+figure4
+
+
+#-------------------------------------------------------------------
+# 6. Placing Figures 3 and 4 vertically in one image
+#-------------------------------------------------------------------
+
+#Combining the two figures vertically
+#and reserving a separate bottom row for the shared legend
+figure3_and_figure4 <- patchwork::wrap_plots(
+  
+  plots = list(
+    
+    #Figure 3 appears at the top
+    figure3,
+    
+    #Figure 4 appears underneath Figure 3
+    figure4,
+    
+    #A separate area at the bottom for the collected legend
+    patchwork::guide_area()
+  ),
+  
+  #One item per row
+  ncol = 1,
+  
+  #Equal space for the two figures and a smaller space
+  #for the shared legend
+  heights = c(
+    1,
+    1,
+    0.18
+  ),
+  
+  #Collecting the identical legends from Figure 3 and Figure 4
+  guides = "collect"
+) &
+  
+  #Applying this formatting to the combined figure
+  ggplot2::theme(
+    
+    #Placing the collected legend in the bottom guide area
+    legend.position = "bottom",
+    
+    #Arranging the color and shape legends vertically
+    legend.box = "vertical",
+    
+    #Centering the complete legend
+    legend.box.just = "center",
+    
+    #Keeping the individual captions close to their figures
+    plot.margin = ggplot2::margin(
+      t = 12,
+      r = 20,
+      b = 5,
+      l = 20
+    )
+  )
+
+
+#Displaying the combined figure
+figure3_and_figure4
+
+
+#-------------------------------------------------------------------
+# 7. Saving Figures 3 and 4 in one PNG file
+#-------------------------------------------------------------------
+
+#Folder where the final figure should be saved
+output_folder <- paste0(
+  "/Users/taravat/Desktop/QP/QP/Data/",
+  "Pipeline-Pilot R code+ results"
+)
+
+
+#Creating the folder automatically if it does not already exist
+dir.create(
+  path = output_folder,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+
+#Creating the complete output filename
+output_file <- file.path(
+  output_folder,
+  paste0(
+    "Figures 3 and 4 - Mean certainty by predicate, ",
+    "boundedness, and scale.png"
+  )
+)
+
+
+#Saving a high-resolution PNG
+ggplot2::ggsave(
+  filename = output_file,
+  plot = figure3_and_figure4,
+  width = 12,
+  height = 18,
+  units = "in",
+  dpi = 600,
+  bg = "white",
+  limitsize = FALSE
+)
+
+
+#Printing the exact saved-file location
+cat(
+  "The combined figure was saved here:\n",
+  normalizePath(
+    output_file,
+    mustWork = TRUE
+  ),
+  "\n"
 )
