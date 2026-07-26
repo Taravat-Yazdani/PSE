@@ -358,7 +358,12 @@ figure1 <- ggplot(
     x = "Predicate",
     y = "Mean certainty rating",
     color = "Predicate type",
-    shape = "Predicate type"
+    shape = "Predicate type",
+    x = "Predicate",
+    y = "Mean certainty rating",
+    color = "Predicate type",
+    shape = "Predicate type",
+    caption = "Figure 1. Mean certainty rating by predicate."
   ) +
   
   #Using a style closer to the published figure
@@ -372,6 +377,17 @@ figure1 <- ggplot(
     ),
     
     legend.position = "bottom",
+    #Left-aligning the caption below the legend
+    plot.caption.position = "plot",
+    
+    plot.caption = element_text(
+      hjust = 0,
+      size = 11,
+      face = "plain",
+      margin = margin(
+        t = 12
+      )
+    ),
     
     panel.border = element_rect(
       color = "black",
@@ -1639,15 +1655,6 @@ output_folder <- paste0(
   "/Users/taravat/Desktop/QP/QP/Data/",
   "Pipeline-Pilot R code+ results"
 )
-
-
-#Creating the folder automatically if it does not already exist
-dir.create(
-  path = output_folder,
-  recursive = TRUE,
-  showWarnings = FALSE
-)
-
 
 #Creating the complete output filename
 output_file <- file.path(
