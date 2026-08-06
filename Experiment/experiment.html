@@ -179,6 +179,87 @@ complete. <br> </p>
     <button onclick="_s.button()">Continue</button>
 </div> 
  -->
+    <!-- =====================================================
+     COMPREHENSION CHECK 1
+     ===================================================== -->
+    <div class="slide" id="comprehension1">
+      <h2>Comprehension Check 1</h2>
+
+      <div class="comprehension-content">
+        <p class="comprehension-statement">
+          John is certain that Bob bought a dog.
+        </p>
+
+        <p class="comprehension-question">
+          Is John certain that Bob bought an animal (and possibly a dog)?
+        </p>
+      </div>
+
+      <div class="comprehension-options">
+        <button
+          id="comprehension1-answer-a"
+          class="comprehension-answer"
+          type="button"
+          onclick="_s.select_answer('a')"
+        >
+          <strong>(a) YES!</strong>
+          John is certain that Bob bought an animal. This includes the
+          possibility that the animal is a dog. Since John is certain Bob bought
+          a dog, he is also certain Bob bought an animal.
+        </button>
+
+        <button
+          id="comprehension1-answer-b"
+          class="comprehension-answer"
+          type="button"
+          onclick="_s.select_answer('b')"
+        >
+          <strong>(b) NO!</strong>
+          John is not just certain that Bob bought an animal. Instead, he is
+          certain that Bob bought a dog, so the statement “John is certain Bob
+          bought an animal” is not correct.
+        </button>
+      </div>
+
+      <div
+        id="comprehension1-correct"
+        class="comprehension-feedback correct-feedback"
+      >
+        <p>
+          <strong>Your response is correct.</strong>
+        </p>
+
+        <p>
+          If John is certain that Bob bought a dog, then he is also certain that
+          Bob bought an animal, because every dog is an animal. This is the
+          interpretation we use throughout the experiment.
+        </p>
+      </div>
+
+      <div
+        id="comprehension1-incorrect"
+        class="comprehension-feedback incorrect-feedback"
+      >
+        <p>
+          <strong>Incorrect. The correct answer is (a) YES.</strong>
+        </p>
+
+        <p>
+          If John is certain that Bob bought a dog, then he is also certain that
+          Bob bought an animal, because every dog is an animal. This is the
+          interpretation we use throughout the experiment.
+        </p>
+      </div>
+
+      <button
+        id="comprehension1-next"
+        class="comprehension-next"
+        type="button"
+        onclick="_s.button()"
+      >
+        Next Question
+      </button>
+    </div>
 
     <div class="slide" id="block1">
       <br />

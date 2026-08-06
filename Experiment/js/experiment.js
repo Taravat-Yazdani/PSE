@@ -22,6 +22,98 @@ function make_slides(f) {
       exp.go(); //use exp.go() if and only if there is no "present" data.
     },
   });
+  // =====================================================
+  // COMPREHENSION CHECK 1
+  // =====================================================
+  slides.comprehension1 = slide({
+    name: "comprehension1",
+
+    start: function () {
+      // Record when the comprehension-check slide appeared.
+      this.start_time = Date.now();
+
+      // No answer has been selected yet.
+      this.selected_answer = null;
+      this.is_correct = null;
+
+      // Restore the slide to its original condition.
+      $("#comprehension1-correct").removeClass("feedback-visible");
+      $("#comprehension1-incorrect").removeClass("feedback-visible");
+      $("#comprehension1-next").removeClass("next-visible");
+
+      // Show the reminder that the participant must answer first.
+      $("#comprehension1-prompt").removeClass("prompt-hidden");
+
+      // Re-enable both answer buttons.
+      $("#comprehension1-answer-a").prop("disabled", false);
+      $("#comprehension1-answer-b").prop("disabled", false);
+
+      // Remove any answer-result classes left from an earlier display.
+      $("#comprehension1-answer-a").removeClass(
+        "selected-correct unselected-answer",
+      );
+
+      $("#comprehension1-answer-b").removeClass(
+        "selected-incorrect unselected-answer",
+      );
+    },
+
+    select_answer: function (answer) {
+      // Do not allow the participant to change the answer afterward.
+      if (this.selected_answer !== null) {
+        return;
+      }
+
+      this.selected_answer = answer;
+      this.is_correct = answer === "a";
+
+      // Hide the initial reminder.
+      $("#comprehension1-prompt").addClass("prompt-hidden");
+
+      // Disable both answer buttons.
+      $("#comprehension1-answer-a").prop("disabled", true);
+      $("#comprehension1-answer-b").prop("disabled", true);
+
+      if (answer === "a") {
+        // Mark answer A as the selected correct answer.
+        $("#comprehension1-answer-a").addClass("selected-correct");
+        $("#comprehension1-answer-b").addClass("unselected-answer");
+
+        // Show correct feedback.
+        $("#comprehension1-correct").addClass("feedback-visible");
+        $("#comprehension1-incorrect").removeClass("feedback-visible");
+      } else {
+        // Mark answer B as the selected incorrect answer.
+        $("#comprehension1-answer-b").addClass("selected-incorrect");
+        $("#comprehension1-answer-a").addClass("unselected-answer");
+
+        // Show incorrect feedback.
+        $("#comprehension1-incorrect").addClass("feedback-visible");
+        $("#comprehension1-correct").removeClass("feedback-visible");
+      }
+
+      // Show the Next Question button only after feedback appears.
+      $("#comprehension1-next").addClass("next-visible");
+    },
+
+    button: function () {
+      // Safety check: do not continue without an answer.
+      if (this.selected_answer === null) {
+        $("#comprehension1-prompt").removeClass("prompt-hidden");
+        return;
+      }
+
+      // Save the response.
+      exp.comprehension_check_1 = {
+        answer: this.selected_answer,
+        correct: this.is_correct,
+        rt: Date.now() - this.start_time,
+      };
+
+      // Continue to the next slide.
+      exp.go();
+    },
+  });
 
   slides.instructions1 = slide({
     name: "instructions1",
@@ -161,6 +253,7 @@ function make_slides(f) {
       exp.data = {
         trials: exp.data_trials,
         catch_trials: exp.catch_trials,
+        comprehension_check_1: exp.comprehension_check_1,
         system: exp.system,
         condition: exp.condition,
         subject_information: exp.subj_data,
@@ -1268,6 +1361,7 @@ function init() {
     "i0",
     "consent",
     "instructions",
+    "comprehension1",
     "block1",
     "questionaire",
     "finished",
