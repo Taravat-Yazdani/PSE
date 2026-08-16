@@ -151,14 +151,7 @@ function make_slides(f) {
       this.init_sliders();
       exp.sliderPost = null;
       console.log(this.stim);
-      //  if (this.stim.trigger_class == "control") {
-      //       	var utterance = "<strong>"+this.stim.fact+"."+this.stim.name + ":</strong> \"<i>"+this.stim.utterance+"</i>\"";
-      //       } else {
-      //       	var utterance = "<strong>"+this.stim.name+":</strong> \"<i>"+this.stim.fact+". "+ this.stim.utterance+"</i>\"";
-      //       }
       var utterance = "";
-      // var utterance = "<p>"+this.stim.name + ": \"<i>"+this.stim.utterance+"</i>\"</p>" +"<p>"+this.stim.name2 + ": \"<i>Are you sure?</i>\"</p>"+this.stim.name + ": \"<i>Yes, I'm sure that "+this.stim.question+".</i>\""
-      //var sentence = "<strong>Fact (which"+this.stim.name+"knows):</strong> \"<i>"+this.stim.fact+"."</i>\"";
       var sentence =
         "<strong>" +
         this.stim.name +
@@ -181,12 +174,6 @@ function make_slides(f) {
           this.stim.probe_text +
           ")?";
       }
-      // console.log(this.stim.block);
-      // 	  if (this.stim.block == "ai") {
-      // 	  		question = "Is "+this.stim.name+" asking whether "+this.stim.question+"?";
-      // 	  } else {
-      // 	  		question = "Is "+this.stim.name+" certain that "+this.stim.question+"?";
-      // 	  	}
       $(".question").html(question);
     },
 
@@ -206,8 +193,6 @@ function make_slides(f) {
     },
     log_responses: function () {
       exp.data_trials.push({
-        //"block" : "block1",
-        //"question_type" : this.stim.block,
         slide_number_in_experiment: exp.phase,
         verb: this.stim.trigger,
         contentNr: this.stim.content,
@@ -231,7 +216,6 @@ function make_slides(f) {
   slides.questionaire = slide({
     name: "questionaire",
     submit: function (e) {
-      //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
       exp.subj_data = {
         language: $("#language").val(),
         assess: $('input[name="assess"]:checked').val(),
@@ -276,18 +260,10 @@ function init() {
       name: "James",
       gender: "M",
     },
-    //    {
-    //      "name":"John",
-    //      "gender":"M"
-    //    },
     {
       name: "Robert",
       gender: "M",
     },
-    //     {
-    //       "name":"Michael",
-    //       "gender":"M"
-    //     },
     {
       name: "William",
       gender: "M",
@@ -300,14 +276,6 @@ function init() {
       name: "Richard",
       gender: "M",
     },
-    //    {
-    //       "name":"Joseph",
-    //       "gender":"M"
-    //     },
-    //     {
-    //       "name":"Charles",
-    //       "gender":"M"
-    //     },
     {
       name: "Thomas",
       gender: "M",
@@ -316,22 +284,10 @@ function init() {
       name: "Christopher",
       gender: "M",
     },
-    //    {
-    //       "name":"Daniel",
-    //       "gender":"M"
-    //     },
     {
       name: "Matthew",
       gender: "M",
     },
-    //    {
-    //      "name":"Donald",
-    //      "gender":"M"
-    //    },
-    //     {
-    //       "name":"Anthony",
-    //       "gender":"M"
-    //     },
     {
       name: "Paul",
       gender: "M",
@@ -364,10 +320,6 @@ function init() {
       name: "Linda",
       gender: "F",
     },
-    //     {
-    //       "name":"Emily",
-    //       "gender":"F"
-    //     },
     {
       name: "Susan",
       gender: "F",
@@ -435,14 +387,6 @@ function init() {
   ]);
 
   var female_subject_names = _.shuffle([
-    //       {
-    //         "name":"Emily",
-    //         "gender":"F"
-    //       },
-    //    {
-    //      "name":"Mary",
-    //      "gender":"F"
-    //    },
     {
       name: "Amanda",
       gender: "F",
@@ -451,10 +395,6 @@ function init() {
       name: "Melissa",
       gender: "F",
     },
-    //     {
-    //       "name":"Deborah",
-    //       "gender":"F"
-    //     },
     {
       name: "Laura",
       gender: "F",
@@ -523,10 +463,6 @@ function init() {
       name: "Janet",
       gender: "F",
     },
-    //    {
-    //       "name":"Samantha",
-    //       "gender":"F"
-    //     },
     {
       name: "Carolyn",
       gender: "F",
@@ -551,10 +487,6 @@ function init() {
       name: "Julie",
       gender: "F",
     },
-    //     {
-    //       "name":"Emma",
-    //       "gender":"F"
-    //     }
   ]);
 
   var male_subject_names = _.shuffle([
@@ -566,10 +498,6 @@ function init() {
       name: "Edward",
       gender: "M",
     },
-    //    {
-    //       "name":"Joshua",
-    //       "gender":"M"
-    //     },
     {
       name: "Brian",
       gender: "M",
@@ -586,10 +514,6 @@ function init() {
       name: "Timothy",
       gender: "M",
     },
-    //    {
-    //       "name":"Jason",
-    //       "gender":"M"
-    //     },
     {
       name: "Jeffrey",
       gender: "M",
@@ -614,18 +538,10 @@ function init() {
       name: "Jacob",
       gender: "M",
     },
-    //   {
-    //       "name":"Jonathan",
-    //       "gender":"M"
-    //     },
     {
       name: "Larry",
       gender: "M",
     },
-    //    {
-    //      "name":"Frank",
-    //      "gender":"M"
-    //    },
     {
       name: "Scott",
       gender: "M",
@@ -646,10 +562,6 @@ function init() {
       name: "Gregory",
       gender: "M",
     },
-    //    {
-    //       "name":"Samuel",
-    //       "gender":"M"
-    //     },
     {
       name: "Benjamin",
       gender: "M",
@@ -658,14 +570,6 @@ function init() {
       name: "Patrick",
       gender: "M",
     },
-    //    {
-    //      "name":"Jack",
-    //      "gender":"M"
-    //    },
-    //     {
-    //       "name":"Dennis",
-    //       "gender":"M"
-    //     },
     {
       name: "Jerry",
       gender: "M",
@@ -1312,39 +1216,11 @@ function init() {
   }
 
   console.log(exp.stims_block1);
-  //console.log(exp.stims_block2);
 
   exp.stims_block1 = _.shuffle(exp.stims_block1);
-  //	exp.stims_block2 = _.shuffle(exp.stims_block2);
-
-  // decide which block comes first
-  //   var block_order = _.shuffle(["ai","projective"]);
-  //   var block1type = block_order[0];
-  //   var block2type = block_order[1];
-  //   console.log(block_order);
-  //   console.log(block1type);
-  //   console.log(block2type);
-  //
-  //    for (k in exp.stims_block2) {
-  //    		exp.stims_block2[k].block = block2type;//block_order[1];
-  //    	}
-  //
-  //    for (i in exp.stims_block1) {
-  //    		exp.stims_block1[i].block = block1type;//block_order[0];
-  //    	}
 
   console.log(exp.stims_block1);
-  //console.log(exp.stims_block2);
-
-  //  exp.all_stims = [];
-  //  for (var i=0; i<items.length; i++) {
-  //    exp.all_stims.push(makeStim(i));
-  //  }
-  //
-  //	for (k in exp.all_stims) {
-  //		console.log(exp.all_stims[k].content)
-  //		}
-
+  
   exp.trials = [];
   exp.catch_trials = [];
   exp.condition = {}; //can randomize between subject conditions here
