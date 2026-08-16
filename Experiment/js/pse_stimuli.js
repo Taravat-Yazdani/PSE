@@ -48,7 +48,7 @@ var PSE_STIMULI = [
     "ub_rephrase": "Frank answered some of the questions, and he did not answer all of them",
     "lb_rephrase": "Frank answered at least some of the questions",
     "scale": "some",
-    "matrix_subject": "Frank",
+    "matrix_subject": "Ben",
     "matrix_gender": "M"
   },
   {
@@ -58,7 +58,7 @@ var PSE_STIMULI = [
     "ub_rephrase": "Jackson completed some of the assignments, and he did not complete all of them",
     "lb_rephrase": "Jackson completed at least some of the assignments",
     "scale": "some",
-    "matrix_subject": "Jackson",
+    "matrix_subject": "Ray",
     "matrix_gender": "M"
   },
   {

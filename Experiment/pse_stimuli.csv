@@ -3,8 +3,8 @@ item_id,content,ec_gender,ub_rephrase,lb_rephrase,scale,matrix_subject,matrix_ge
 2,Josie failed some of the courses,F,"Josie failed some of the courses, and she did not fail all of them",Josie failed at least some of the courses,some,Scott,M
 3,Emma used some of the office supplies,F,"Emma used some of the office supplies, and she did not use all of them",Emma used at least some of the office supplies,some,Justin,M
 4,Danny solved some of the puzzles,M,"Danny solved some of the puzzles, and he did not solve all of them",Danny solved at least some of the puzzles,some,Jerry,M
-5,Frank answered some of the questions,M,"Frank answered some of the questions, and he did not answer all of them",Frank answered at least some of the questions,some,Frank,M
-6,Jackson completed some of the assignments,M,"Jackson completed some of the assignments, and he did not complete all of them",Jackson completed at least some of the assignments,some,Jackson,M
+5,Frank answered some of the questions,M,"Frank answered some of the questions, and he did not answer all of them",Frank answered at least some of the questions,some,Ben,M
+6,Jackson completed some of the assignments,M,"Jackson completed some of the assignments, and he did not complete all of them",Jackson completed at least some of the assignments,some,Ray,M
 7,Isabella ate cake or pie,F,"Isabella ate cake or pie, and she did not eat both",Isabella ate cake or pie or both,or,Kevin,M
 8,Emily failed math or science,F,"Emily failed math or science, and she did not fail both",Emily failed math or science or both,or,Brian,M
 9,Grace used pens or markers,F,"Grace used pens or markers, and she did not use both",Grace used pens or markers or both,or,Andrew,M
