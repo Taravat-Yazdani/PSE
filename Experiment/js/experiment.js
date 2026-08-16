@@ -899,47 +899,21 @@ function init() {
     },
   };
 
-  var items_content_mapping = {
-    know: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    discover: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    reveal: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    establish: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    think: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    suggest: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    prove: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    say: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    hear: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    inform_Sam: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    acknowledge: [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12",
-    ],
-    confirm: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-  };
-  var content_fact_mapping = {
-    1: ["factH", "factL"],
-    2: ["factH", "factL"],
-    3: ["factH", "factL"],
-    4: ["factH", "factL"],
-    5: ["factH", "factL"],
-    6: ["factH", "factL"],
-    7: ["factH", "factL"],
-    8: ["factH", "factL"],
-    9: ["factH", "factL"],
-    10: ["factH", "factL"],
-    11: ["factH", "factL"],
-    12: ["factH", "factL"],
-  };
+  var content_map_index = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+  var items_content_mapping = (function() {
+    var keys = [
+      'know','discover','reveal','establish','think','suggest',
+      'prove','say','hear','inform_Sam','acknowledge','confirm'
+    ];
+    var m = {};
+    keys.forEach(function(k){ m[k] = content_map_index; });
+    return m;
+  })();
+  var content_fact_index = ["factH", "factL"];
+  var content_fact_mapping = {};
+  for (var i = 1; i <= 12; i++) {
+    content_fact_mapping[i] = content_fact_index;
+  }
   var some_contents = _.shuffle(["1", "2", "3", "4", "5", "6"]);
   var or_contents = _.shuffle(["7", "8", "9", "10", "11", "12"]);
   var probe_by_content = {};
@@ -1220,7 +1194,7 @@ function init() {
   exp.stims_block1 = _.shuffle(exp.stims_block1);
 
   console.log(exp.stims_block1);
-  
+
   exp.trials = [];
   exp.catch_trials = [];
   exp.condition = {}; //can randomize between subject conditions here
