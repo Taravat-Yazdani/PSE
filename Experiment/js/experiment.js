@@ -198,13 +198,9 @@ function make_slides(f) {
         contentNr: this.stim.content,
         content: this.stim.question,
         speakerGender: this.stim.gender,
-        fact: this.stim.fact,
-        fact_type: this.stim.fact_type,
         utterance: this.stim.utterance,
         question: this.stim.content,
-        subjectGender: this.stim.gender2,
         speakerName: this.stim.name,
-        subjectName: this.stim.name2,
         trigger_class: this.stim.trigger_class,
         probe_text: this.stim.probe_text,
         response: exp.sliderPost,
@@ -386,204 +382,6 @@ function init() {
     },
   ]);
 
-  var female_subject_names = _.shuffle([
-    {
-      name: "Amanda",
-      gender: "F",
-    },
-    {
-      name: "Melissa",
-      gender: "F",
-    },
-    {
-      name: "Laura",
-      gender: "F",
-    },
-    {
-      name: "Stephanie",
-      gender: "F",
-    },
-    {
-      name: "Rebecca",
-      gender: "F",
-    },
-    {
-      name: "Sharon",
-      gender: "F",
-    },
-    {
-      name: "Cynthia",
-      gender: "F",
-    },
-    {
-      name: "Kathleen",
-      gender: "F",
-    },
-    {
-      name: "Ruth",
-      gender: "F",
-    },
-    {
-      name: "Anna",
-      gender: "F",
-    },
-    {
-      name: "Shirley",
-      gender: "F",
-    },
-    {
-      name: "Amy",
-      gender: "F",
-    },
-    {
-      name: "Angela",
-      gender: "F",
-    },
-    {
-      name: "Virginia",
-      gender: "F",
-    },
-    {
-      name: "Brenda",
-      gender: "F",
-    },
-    {
-      name: "Catherine",
-      gender: "F",
-    },
-    {
-      name: "Nicole",
-      gender: "F",
-    },
-    {
-      name: "Christina",
-      gender: "F",
-    },
-    {
-      name: "Janet",
-      gender: "F",
-    },
-    {
-      name: "Carolyn",
-      gender: "F",
-    },
-    {
-      name: "Rachel",
-      gender: "F",
-    },
-    {
-      name: "Heather",
-      gender: "F",
-    },
-    {
-      name: "Diane",
-      gender: "F",
-    },
-    {
-      name: "Joyce",
-      gender: "F",
-    },
-    {
-      name: "Julie",
-      gender: "F",
-    },
-  ]);
-
-  var male_subject_names = _.shuffle([
-    {
-      name: "Andrew",
-      gender: "M",
-    },
-    {
-      name: "Edward",
-      gender: "M",
-    },
-    {
-      name: "Brian",
-      gender: "M",
-    },
-    {
-      name: "Kevin",
-      gender: "M",
-    },
-    {
-      name: "Ronald",
-      gender: "M",
-    },
-    {
-      name: "Timothy",
-      gender: "M",
-    },
-    {
-      name: "Jeffrey",
-      gender: "M",
-    },
-    {
-      name: "Gary",
-      gender: "M",
-    },
-    {
-      name: "Ryan",
-      gender: "M",
-    },
-    {
-      name: "Nicholas",
-      gender: "M",
-    },
-    {
-      name: "Eric",
-      gender: "M",
-    },
-    {
-      name: "Jacob",
-      gender: "M",
-    },
-    {
-      name: "Larry",
-      gender: "M",
-    },
-    {
-      name: "Scott",
-      gender: "M",
-    },
-    {
-      name: "Justin",
-      gender: "M",
-    },
-    {
-      name: "Brandon",
-      gender: "M",
-    },
-    {
-      name: "Raymond",
-      gender: "M",
-    },
-    {
-      name: "Gregory",
-      gender: "M",
-    },
-    {
-      name: "Benjamin",
-      gender: "M",
-    },
-    {
-      name: "Patrick",
-      gender: "M",
-    },
-    {
-      name: "Jerry",
-      gender: "M",
-    },
-    {
-      name: "Alexander",
-      gender: "M",
-    },
-    {
-      name: "Tyler",
-      gender: "M",
-    },
-  ]);
-
   var items = _.shuffle([
     {
       trigger: "know",
@@ -637,7 +435,6 @@ function init() {
 
   var contents = {
     1: {
-      gender: "f",
       content: "Mary ate some of the cupcakes",
       know: "Does Patrick know that Mary ate some of the cupcakes?",
       discover: "Did Patrick discover that Mary ate some of the cupcakes?",
@@ -654,7 +451,6 @@ function init() {
       confirm: "Did Patrick confirm that Mary ate some of the cupcakes?",
     },
     2: {
-      gender: "f",
       content: "Josie failed some of the courses",
       know: "Does Scott know that Josie failed some of the courses?",
       discover: "Did Scott discover that Josie failed some of the courses?",
@@ -671,7 +467,6 @@ function init() {
       confirm: "Did Scott confirm that Josie failed some of the courses?",
     },
     3: {
-      gender: "f",
       content: "Emma used some of the office supplies",
       know: "Does Justin know that Emma used some of the office supplies?",
       discover:
@@ -691,7 +486,6 @@ function init() {
       confirm: "Did Justin confirm that Emma used some of the office supplies?",
     },
     4: {
-      gender: "m",
       content: "Danny solved some of the puzzles",
       know: "Does Jerry know that Danny solved some of the puzzles?",
       discover: "Did Jerry discover that Danny solved some of the puzzles?",
@@ -708,7 +502,6 @@ function init() {
       confirm: "Did Jerry confirm that Danny solved some of the puzzles?",
     },
     5: {
-      gender: "m",
       content: "Frank answered some of the questions",
       know: "Does Ben know that Frank answered some of the questions?",
       discover: "Did Ben discover that Frank answered some of the questions?",
@@ -726,7 +519,6 @@ function init() {
       confirm: "Did Ben confirm that Frank answered some of the questions?",
     },
     6: {
-      gender: "m",
       content: "Jackson completed some of the assignments",
       know: "Does Ray know that Jackson completed some of the assignments?",
       discover:
@@ -748,7 +540,6 @@ function init() {
         "Did Ray confirm that Jackson completed some of the assignments?",
     },
     7: {
-      gender: "f",
       content: "Isabella ate cake or pie",
       know: "Does Kevin know that Isabella ate cake or pie?",
       discover: "Did Kevin discover that Isabella ate cake or pie?",
@@ -764,7 +555,6 @@ function init() {
       confirm: "Did Kevin confirm that Isabella ate cake or pie?",
     },
     8: {
-      gender: "f",
       content: "Emily failed math or science",
       know: "Does Brian know that Emily failed math or science?",
       discover: "Did Brian discover that Emily failed math or science?",
@@ -780,7 +570,6 @@ function init() {
       confirm: "Did Brian confirm that Emily failed math or science?",
     },
     9: {
-      gender: "f",
       content: "Grace used pens or markers",
       know: "Does Andrew know that Grace used pens or markers?",
       discover: "Did Andrew discover that Grace used pens or markers?",
@@ -796,7 +585,6 @@ function init() {
       confirm: "Did Andrew confirm that Grace used pens or markers?",
     },
     10: {
-      gender: "m",
       content: "Jayden solved the puzzles or problems",
       know: "Does Tim know that Jayden solved the puzzles or problems?",
       discover: "Did Tim discover that Jayden solved the puzzles or problems?",
@@ -815,7 +603,6 @@ function init() {
       confirm: "Did Tim confirm that Jayden solved the puzzles or problems?",
     },
     11: {
-      gender: "m",
       content: "Tony answered emails or calls",
       know: "Does Amanda know that Tony answered emails or calls?",
       discover: "Did Amanda discover that Tony answered emails or calls?",
@@ -831,7 +618,6 @@ function init() {
       confirm: "Did Amanda confirm that Tony answered emails or calls?",
     },
     12: {
-      gender: "m",
       content: "Josh bought coffee or tea",
       know: "Does Melissa know that Josh bought coffee or tea?",
       discover: "Did Melissa discover that Josh bought coffee or tea?",
@@ -848,57 +634,6 @@ function init() {
     },
   };
 
-  var facts = {
-    1: {
-      factH: "Mary is taking a prenatal yoga class",
-      factL: "Mary is a middle school student",
-    },
-    2: {
-      factH: "Josie loves France",
-      factL: "Josie doesn't have a passport",
-    },
-    3: {
-      factH: "Emma is in law school",
-      factL: "Emma is in first grade",
-    },
-    4: {
-      factH: "Olivia works the third shift",
-      factL: "Olivia has two small children",
-    },
-    5: {
-      factH: "Sophia is a hipster",
-      factL: "Sophia is a high end fashion model",
-    },
-    6: {
-      factH: "Mia is a college student",
-      factL: "Mia is a nun",
-    },
-    7: {
-      factH: "Isabella is from Argentina",
-      factL: "Isabella is a vegetarian",
-    },
-    8: {
-      factH: "Emily has been saving for a year",
-      factL: "Emily never has any money",
-    },
-    9: {
-      factH: "Grace loves her sister",
-      factL: "Grace hates her sister",
-    },
-    10: {
-      factH: "Zoe is a math major",
-      factL: "Zoe is 5 years old",
-    },
-    11: {
-      factH: "Danny loves cake",
-      factL: "Danny is a diabetic",
-    },
-    12: {
-      factH: "Frank has always wanted a pet",
-      factL: "Frank is allergic to cats",
-    },
-  };
-
   var content_map_index = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   var items_content_mapping = (function() {
     var keys = [
@@ -909,11 +644,6 @@ function init() {
     keys.forEach(function(k){ m[k] = content_map_index; });
     return m;
   })();
-  var content_fact_index = ["factH", "factL"];
-  var content_fact_mapping = {};
-  for (var i = 1; i <= 12; i++) {
-    content_fact_mapping[i] = content_fact_index;
-  }
   var some_contents = _.shuffle(["1", "2", "3", "4", "5", "6"]);
   var or_contents = _.shuffle(["7", "8", "9", "10", "11", "12"]);
   var probe_by_content = {};
@@ -973,47 +703,6 @@ function init() {
     return content;
   }
 
-  // get content facts
-  function getFact(content) {
-    //  		console.log("items_content_mapping before throwing out "+trigger);
-    //  		console.log(items_content_mapping);
-    //  		for (var j in items_content_mapping) {
-    //  		console.log("items_content_mapping at "+j);
-    //  		console.log(items_content_mapping[j]);
-    //  		}
-    //  		console.log("items_content_mapping at the trigger before shuffling");
-    //  		console.log(items_content_mapping[trigger]);
-    content_fact_mapping[content] = _.shuffle(content_fact_mapping[content]);
-    //  		console.log("items_content_mapping at the trigger after shuffling");
-    //  		console.log(items_content_mapping[trigger]);
-    //  		console.log("items_content_mapping after shuffling "+trigger);
-    //  		console.log(items_content_mapping);
-    var factType = content_fact_mapping[content].shift(); //items_content_mapping[trigger][0];
-    //  		console.log("this is the selected content: " + content);
-    //		var index = items_content_mapping[trigger].indexOf(content);
-    //  		items_content_mapping[trigger] = items_content_mapping[trigger].splice(index,1);
-    //  		console.log("items_content_mapping at the trigger after throwing it out");
-    //  		console.log(items_content_mapping[trigger]);
-    //  		for (var j in items_content_mapping) {
-    //			var index = items_content_mapping[j].indexOf(content);
-    //			console.log("the next three lines: the array before removal, the index of content, the array after removal")
-    //			console.log(items_content_mapping[j]);
-    //			console.log(index);
-    //			if (index != -1)
-    //			{
-    //				items_content_mapping[j].splice(index,1);
-    //			}
-    //			console.log(items_content_mapping[j]);
-    //  		}
-    //  		console.log("items_content_mapping after throwing out "+trigger);
-    //  		console.log(items_content_mapping);
-    //  		for (var j in items_content_mapping) {
-    //  		console.log("items_content_mapping at "+j);
-    //  		console.log(items_content_mapping[j]);
-    //  		}
-    return factType;
-  }
-
   // assign contents to triggers
   var trigger_contents = {
     know: getContent("know"),
@@ -1030,64 +719,42 @@ function init() {
     confirm: getContent("confirm"),
   };
 
-  // assign facts to contents
-  var content_facts = {
-    1: getFact("1"),
-    2: getFact("2"),
-    3: getFact("3"),
-    4: getFact("4"),
-    5: getFact("5"),
-    6: getFact("6"),
-    7: getFact("7"),
-    8: getFact("8"),
-    9: getFact("9"),
-    10: getFact("10"),
-    11: getFact("11"),
-    12: getFact("12"),
-  };
-
   control_items = [
     {
       item_id: "control1",
       short_trigger: "control",
       utterance: "Is Zack coming to the meeting tomorrow?",
       content: "Zack is coming to the meeting tomorrow",
-      fact: "Zack is a member of the golf club",
     },
     {
       item_id: "control2",
       short_trigger: "control",
       utterance: "Is Mary's aunt sick?",
       content: "Mary's aunt is sick",
-      fact: "Mary visited her aunt on Sunday",
     },
     {
       item_id: "control3",
       short_trigger: "control",
       utterance: "Did Todd play football in high school?",
       content: "Todd played football in high school",
-      fact: "Todd goes to the gym 3 times a week",
     },
     {
       item_id: "control4",
       short_trigger: "control",
       utterance: "Is Vanessa good at math?",
       content: "Vanessa is good at math",
-      fact: "Vanessa won a prize at school",
     },
     {
       item_id: "control5",
       short_trigger: "control",
       utterance: "Did Madison have a baby?",
       content: "Madison had a baby",
-      fact: "Trish sent Madison a card",
     },
     {
       item_id: "control6",
       short_trigger: "control",
       utterance: "Was Hendrick's car expensive?",
       content: "Hendrick's car was expensive",
-      fact: "Hendrick just bought a car",
     },
   ];
 
@@ -1101,21 +768,17 @@ function init() {
 
     return {
       name: name,
-      name2: "NA",
       gender: gender,
-      gender2: "NA",
       trigger: item.short_trigger,
       short_trigger: item.short_trigger,
       trigger_class: "control",
       content: item.item_id,
-      fact: item.fact,
-      fact_type: "NA",
       utterance: item.utterance,
       question: item.content,
     };
   }
 
-  function makeStim(i, factType) {
+  function makeStim(i) {
     //get item
     var item = items[i];
     //get a name to be speaker
@@ -1128,44 +791,15 @@ function init() {
     var trigger = item.trigger;
     var short_trigger = trigger;
 
-    // get fact for that content
-    // var	factType = content_facts[trigger_cont];
-
-    console.log(trigger_cont + " " + factType);
-
-    //   console.log("short_trigger: "+short_trigger);
-    //	console.log("trigger: "+trigger);
-    //	console.log(trigger_cont);
-    //  console.log("trigger_cont: "+trigger_cont);
-    //   console.log("utterance: "+contents[trigger_cont][short_trigger]);
-    //   console.log(contents[trigger_cont]);
-    //    console.log(trigger_cont);
-    //var fact = facts[trigger_cont][fact];
     var utterance = contents[trigger_cont][short_trigger];
     var question = contents[trigger_cont].content;
-    var fact = facts[trigger_cont][factType];
     var probe_text = probe_by_content[trigger_cont];
-    var factType = factType;
-    console.log(fact);
-    //   console.log(contents[trigger_cont]);
-    //    console.log(question)
-    //get another name to be subject
-    var name_data2 =
-      contents[trigger_cont].gender == "m"
-        ? female_subject_names[i]
-        : male_subject_names[i];
-    var name2 = name_data2.name;
-    var gender2 = name_data2.gender;
     return {
       name: name,
-      name2: name2,
       gender: gender,
-      gender2: gender2,
       trigger: item.trigger,
       short_trigger: short_trigger,
       trigger_class: item.trigger_class,
-      fact: fact,
-      fact_type: factType,
       content: trigger_cont,
       utterance: utterance,
       question: question,
@@ -1175,8 +809,7 @@ function init() {
   exp.stims_block1 = [];
   //   exp.stims_block2 = [];
   for (var i = 0; i < items.length; i++) {
-    var stim =
-      i < items.length / 2 ? makeStim(i, "factL") : makeStim(i, "factH");
+    var stim = makeStim(i);
     //    exp.stims_block1.push(makeStim(i));
     exp.stims_block1.push(jQuery.extend(true, {}, stim));
     //	exp.stims_block2.push(jQuery.extend(true, {}, stim));
