@@ -1,7 +1,6 @@
 #Installing and calling necessary packages
-install.packages("tidyverse")
+install.packages(c("tidyverse", "patchwork"))
 library(tidyverse)
-install.packages("patchwork")
 library(patchwork)
 
 #Reading the merged file 

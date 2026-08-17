@@ -7,7 +7,7 @@
     <!-- external general utilities -->
     <script src="_shared/js/jquery-1.11.1.min.js"></script>
     <script
-      src="https://proliferate.alps.science/static/js/proliferate.js"
+      src="_shared/js/proliferate.js"
       type="text/javascript"
     ></script>
     <script src="_shared/full-projects/jquery-ui/jquery-ui.min.js"></script>
@@ -40,6 +40,9 @@
     />
     <link href="css/local-style.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- generated from pse_stimuli.csv by build_stimuli.js -->
+    <script src="js/pse_stimuli.js"></script>
 
     <!-- experiment file -->
     <script src="js/experiment.js"></script>
@@ -264,11 +267,11 @@ complete. <br> </p>
     <div class="slide" id="block1">
       <br />
       <br />
-      <p class="utterance">{{}}</p>
       <p class="sentence">{{}}</p>
       <br />
       <br />
       <p class="question">{{}}</p>
+      <p class="statement">{{}}</p>
       <br />
       <table id="slider_table" class="slider_table">
         <tr>
