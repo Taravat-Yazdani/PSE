@@ -38,8 +38,8 @@ var PSE_STIMULI = [
     "ub_rephrase": "Danny solved some of the puzzles, and he did not solve all of them",
     "lb_rephrase": "Danny solved at least some of the puzzles",
     "scale": "some",
-    "matrix_subject": "Jerry",
-    "matrix_gender": "M"
+    "matrix_subject": "Janice",
+    "matrix_gender": "F"
   },
   {
     "item_id": "5",
@@ -48,8 +48,8 @@ var PSE_STIMULI = [
     "ub_rephrase": "Frank answered some of the questions, and he did not answer all of them",
     "lb_rephrase": "Frank answered at least some of the questions",
     "scale": "some",
-    "matrix_subject": "Ben",
-    "matrix_gender": "M"
+    "matrix_subject": "Barbara",
+    "matrix_gender": "F"
   },
   {
     "item_id": "6",
@@ -58,8 +58,8 @@ var PSE_STIMULI = [
     "ub_rephrase": "Jackson completed some of the assignments, and he did not complete all of them",
     "lb_rephrase": "Jackson completed at least some of the assignments",
     "scale": "some",
-    "matrix_subject": "Ray",
-    "matrix_gender": "M"
+    "matrix_subject": "Rachel",
+    "matrix_gender": "F"
   },
   {
     "item_id": "7",
@@ -98,8 +98,8 @@ var PSE_STIMULI = [
     "ub_rephrase": "Jayden solved the puzzles or problems, and he did not solve both",
     "lb_rephrase": "Jayden solved the puzzles or problems or both",
     "scale": "or",
-    "matrix_subject": "Tim",
-    "matrix_gender": "M"
+    "matrix_subject": "Tina",
+    "matrix_gender": "F"
   },
   {
     "item_id": "11",
