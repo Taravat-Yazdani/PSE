@@ -1,6 +1,7 @@
 .DS_Store 
-Data/Pipeline-Pilot Data/pse-sandbox-workerids.csv
+Data/Pipeline-Pilot1 Data/pse-sandbox-workerids.csv
 .Rproj.user
 .RData
 .Rhistory
 pse_stimuli_files/
+Data/Pipeline-Pilot2 Data/PSE-workerids.csv
