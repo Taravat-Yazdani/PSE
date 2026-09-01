@@ -7,6 +7,10 @@ library(patchwork)
 data_raw <- read_csv(
   "/Users/taravat/Desktop/QP/QP/Data/Pipeline-Pilot2 Data/PSE-merged.csv"
 )
+# Participants time mean 
+mean_time <- mean(data_raw$time_in_minutes, na.rm = TRUE)
+mean_time
+
 
 # Creating verb from the trigger column
 data_raw <- data_raw %>%
