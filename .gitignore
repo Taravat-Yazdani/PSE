@@ -5,3 +5,5 @@ Data/Pipeline-Pilot1 Data/pse-sandbox-workerids.csv
 .Rhistory
 pse_stimuli_files/
 Data/Pipeline-Pilot2 Data/PSE-workerids.csv
+Data/PSE-Main data/Uncleaned data/PSE-workerids.csv
+Data/PSE-Main data/Cleaned data/PSE-workerids.csv
