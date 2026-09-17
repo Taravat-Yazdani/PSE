@@ -36,6 +36,7 @@ workerid,proliferate.condition,age,american,assess,comments,education,enjoyment,
 182,main,27,y,Yes,NA,Graduated College,Yes,m,English,NA,NA
 281,main,76,y,Yes,This is an interesting study. The only issue I have is that I will never know the correct answers. Frustrating!,Graduated College,Yes,f,English,no,NA
 297,main,39,y,Yes,NA,Graduated College,It was fine,f,English,No,NA
+433,main,32,y,Yes,NA,Graduated College,Yes,m,English,None,NA
 112,main,33,y,Yes,NA,Some College,It was fine,f,ENGLISH,NA,NA
 81,main,55,y,Yes,NA,Graduated College,It was fine,m,English,NA,NA
 223,main,25,y,Yes,"N/A, thank ya!",Graduated High School,NA,m,English,N/A,NA
@@ -276,6 +277,7 @@ Anyway, hope this is helpful even if my results are not that informative due to 
 145,main,58,y,Yes,NA,Graduated High School,It was fine,f,English,No,NA
 224,main,24,y,Yes,NA,Graduated College,It was fine,m,English,NA,NA
 64,main,27,y,Yes,n/a,Some College,Yes,m,english,no,NA
+435,main,59,y,Yes,none,Graduated College,Yes,f,English,no,NA
 178,main,19,y,Yes,N/A,Some High School,It was fine,f,English,No,NA
 55,main,38,y,Yes,NA,Graduated College,Yes,m,english,no,NA
 344,main,26,y,Yes,NA,Graduated College,Yes,f,english,no,NA
@@ -335,6 +337,7 @@ Anyway, hope this is helpful even if my results are not that informative due to 
 212,main,50,y,Yes,In my head I could hear people ask some of the questions in two ways. It would be interesting to know if people's answers would be different if the questions were read aloud with different tones.,Hold a higher degree,Yes,f,English,no,NA
 164,main,26,y,Yes,Interesting study,Graduated College,Yes,f,English,"none, all good",NA
 100,main,25,y,Yes,NA,Graduated College,Yes,f,english,no,NA
+434,main,31,y,Yes,NA,Graduated College,Yes,f,English,No,NA
 241,main,34,y,Yes,None,Graduated College,Yes,m,English,No,NA
 48,main,57,y,Yes,NA,Graduated High School,Yes,m,English,no,NA
 233,main,56,y,Yes,NA,Graduated College,It was fine,f,English,no,NA

@@ -39,6 +39,7 @@ workerid,proliferate.condition,Browser,OS,screenH,screenW,error
 182,main,Chrome,Windows,1080,1920,NA
 281,main,Chrome,Windows,821,1313,NA
 297,main,Chrome,Windows,864,1536,NA
+433,main,Chrome,Windows,864,1536,NA
 112,main,Chrome,Windows,1080,1920,NA
 81,main,Chrome,Windows,1440,2560,NA
 223,main,Chrome,Windows,1080,1920,NA
@@ -293,6 +294,7 @@ workerid,proliferate.condition,Browser,OS,screenH,screenW,error
 145,main,Firefox,Windows,720,1280,NA
 224,main,Chrome,Windows,864,1536,NA
 64,main,Chrome,Windows,1080,1920,NA
+435,main,Chrome,Mac,900,1440,NA
 178,main,Chrome,Windows,864,1536,NA
 55,main,Chrome,Windows,864,1536,NA
 420,main,Chrome,Windows,1080,1920,NA
@@ -353,6 +355,7 @@ workerid,proliferate.condition,Browser,OS,screenH,screenW,error
 212,main,Chrome,Windows,960,1536,NA
 164,main,Chrome,Windows,960,1707,NA
 100,main,Chrome,Windows,864,1536,NA
+434,main,Chrome,Linux,785,1396,NA
 241,main,Chrome,Mac,800,1280,NA
 48,main,Chrome,Windows,768,1366,NA
 233,main,Chrome,Windows,900,1440,NA

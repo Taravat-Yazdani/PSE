@@ -36,6 +36,7 @@ workerid,proliferate.condition,time_in_minutes,error
 182,main,6.25165,NA
 281,main,7.345216666666667,NA
 297,main,3.8991666666666664,NA
+433,main,3.9564666666666666,NA
 112,main,11.36375,NA
 81,main,4.13655,NA
 223,main,4.465816666666667,NA
@@ -271,6 +272,7 @@ workerid,proliferate.condition,time_in_minutes,error
 145,main,6.403,NA
 224,main,3.7767666666666666,NA
 64,main,8.0139,NA
+435,main,6.89075,NA
 178,main,9.632966666666666,NA
 55,main,4.0708,NA
 344,main,4.479683333333333,NA
@@ -330,6 +332,7 @@ workerid,proliferate.condition,time_in_minutes,error
 212,main,11.256283333333334,NA
 164,main,9.349933333333333,NA
 100,main,5.18185,NA
+434,main,3.6551,NA
 241,main,3.570233333333334,NA
 48,main,5.862316666666667,NA
 233,main,7.0391,NA

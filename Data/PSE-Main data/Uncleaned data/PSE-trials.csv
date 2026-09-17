@@ -719,6 +719,24 @@ workerid,proliferate.condition,condition,item_id,matrix_subject,response,rt,scal
 297,main,NA,control6,NA,0,4524,NA,19,M,George,Hendrick's car was expensive,control,control,Was Hendrick's car expensive?,NA
 297,main,lb,2,Scott,0.49,11246,some,20,F,Elizabeth,Josie failed at least some of the courses,establish,NonProj,Did Scott establish that Josie failed some of the courses?,NA
 297,main,ub,7,Kevin,0.4,5908,or,21,M,David,"Isabella ate cake or pie, and she did not eat both",suggest,C,Did Kevin suggest that Isabella ate cake or pie?,NA
+433,main,lb,1,Patrick,0.87,19204,some,4,F,Donna,Mary ate at least some of the cupcakes,establish,NonProj,Did Patrick establish that Mary ate some of the cupcakes?,NA
+433,main,lb,10,Tina,0.88,9977,or,5,F,Margaret,Jayden solved the crossword or the Rubik's cube or both,know,NonProj,Does Tina know that Jayden solved the crossword or the Rubik's cube?,NA
+433,main,ub,11,Amanda,0.18,13992,or,6,M,George,"Tony graded the midterm or the final, and he did not grade both",prove,C,Did Amanda prove that Tony graded the midterm or the final?,NA
+433,main,lb,4,Janice,0.88,13439,some,7,M,James,Danny solved at least some of the puzzles,hear,C,Did Janice hear that Danny solved some of the puzzles?,NA
+433,main,lb,8,Brian,0.85,65486,or,8,F,Michelle,Emily failed math or science or both,discover,NonProj,Did Brian discover that Emily failed math or science?,NA
+433,main,NA,control3,NA,0.06,3012,NA,9,M,Christopher,Todd played football in high school,control,control,Did Todd play football in high school?,NA
+433,main,NA,control6,NA,0.06,3403,NA,10,F,Helen,Hendrick's car was expensive,control,control,Was Hendrick's car expensive?,NA
+433,main,ub,5,Barbara,0.9,3000,some,11,F,Ashley,"Frank graded some of the math problems, and he did not grade all of them",acknowledge,C,Did Barbara acknowledge that Frank graded some of the math problems?,NA
+433,main,NA,control1,NA,0.09,2163,NA,12,F,Sandra,Zack is coming to the meeting tomorrow,control,control,Is Zack coming to the meeting tomorrow?,NA
+433,main,ub,12,Melissa,0.85,9661,or,13,F,Susan,"Josh drank coffee or tea, and he did not drink both",inform_Sam,C,Did Melissa inform Sam that Josh drank coffee or tea?,NA
+433,main,ub,2,Scott,0.82,5768,some,14,M,Kenneth,"Josie failed some of the courses, and she did not fail all of them",suggest,C,Did Scott suggest that Josie failed some of the courses?,NA
+433,main,ub,3,Justin,0.91,4459,some,15,F,Lisa,"Emma stole some of the office supplies, and she did not take all of them",confirm,C,Did Justin confirm that Emma stole some of the office supplies?,NA
+433,main,lb,7,Kevin,0.08,9642,or,16,M,Thomas,Isabella ate cake or pie or both,say,C,Did Kevin say that Isabella ate cake or pie?,NA
+433,main,NA,control4,NA,0.11,2933,NA,17,F,Dorothy,Vanessa is good at math,control,control,Is Vanessa good at math?,NA
+433,main,NA,control2,NA,0.06,2006,NA,18,F,Jennifer,Mary's aunt is sick,control,control,Is Mary's aunt sick?,NA
+433,main,lb,6,Rachel,0.54,11369,some,19,F,Betty,Jackson drank at least some of the sodas,think,NonProj,Does Rachel think that Jackson drank some of the sodas?,NA
+433,main,ub,9,Andrew,0.14,13514,or,20,F,Karen,"Grace stole a laptop or a calculator, and she did not steal both",reveal,NonProj,Did Andrew reveal that Grace stole a laptop or a calculator?,NA
+433,main,NA,control5,NA,0.01,4469,NA,21,F,Elizabeth,Madison had a baby,control,control,Did Madison have a baby?,NA
 112,main,NA,control4,NA,0.01,7872,NA,4,M,William,Vanessa is good at math,control,control,Is Vanessa good at math?,NA
 112,main,ub,2,Scott,1,23032,some,5,F,Helen,"Josie failed some of the courses, and she did not fail all of them",confirm,C,Did Scott confirm that Josie failed some of the courses?,NA
 112,main,ub,6,Rachel,0.01,111455,some,6,M,Christopher,"Jackson drank some of the sodas, and he did not drink all of them",reveal,NonProj,Did Rachel reveal that Jackson drank some of the sodas?,NA
@@ -5291,6 +5309,24 @@ workerid,proliferate.condition,condition,item_id,matrix_subject,response,rt,scal
 64,main,ub,6,Rachel,0.53,12703,some,19,F,Carol,"Jackson drank some of the sodas, and he did not drink all of them",reveal,NonProj,Did Rachel reveal that Jackson drank some of the sodas?,NA
 64,main,ub,12,Melissa,0.69,4352,or,20,F,Jessica,"Josh drank coffee or tea, and he did not drink both",hear,C,Did Melissa hear that Josh drank coffee or tea?,NA
 64,main,ub,8,Brian,0.34,5648,or,21,F,Karen,"Emily failed math or science, and she did not fail both",confirm,C,Did Brian confirm that Emily failed math or science?,NA
+435,main,lb,6,Rachel,0.79,25098,some,4,M,David,Jackson drank at least some of the sodas,hear,C,Did Rachel hear that Jackson drank some of the sodas?,NA
+435,main,NA,control5,NA,0.27,11898,NA,5,M,Thomas,Madison had a baby,control,control,Did Madison have a baby?,NA
+435,main,ub,1,Patrick,0.7,13483,some,6,F,Nancy,"Mary ate some of the cupcakes, and she did not eat all of them",know,NonProj,Does Patrick know that Mary ate some of the cupcakes?,NA
+435,main,NA,control6,NA,0.07,8366,NA,7,M,William,Hendrick's car was expensive,control,control,Was Hendrick's car expensive?,NA
+435,main,NA,control3,NA,0.34,24967,NA,8,F,Jennifer,Todd played football in high school,control,control,Did Todd play football in high school?,NA
+435,main,lb,4,Janice,0.75,16299,some,9,F,Kimberly,Danny solved at least some of the puzzles,acknowledge,C,Did Janice acknowledge that Danny solved some of the puzzles?,NA
+435,main,lb,8,Brian,0.22,30632,or,10,F,Helen,Emily failed math or science or both,establish,NonProj,Did Brian establish that Emily failed math or science?,NA
+435,main,lb,2,Scott,0.36,10734,some,11,F,Dorothy,Josie failed at least some of the courses,reveal,NonProj,Did Scott reveal that Josie failed some of the courses?,NA
+435,main,NA,control1,NA,0.02,10433,NA,12,F,Lisa,Zack is coming to the meeting tomorrow,control,control,Is Zack coming to the meeting tomorrow?,NA
+435,main,ub,3,Justin,0.3,11432,some,13,F,Sandra,"Emma stole some of the office supplies, and she did not take all of them",confirm,C,Did Justin confirm that Emma stole some of the office supplies?,NA
+435,main,NA,control2,NA,0.16,5866,NA,14,M,Robert,Mary's aunt is sick,control,control,Is Mary's aunt sick?,NA
+435,main,ub,11,Amanda,0.75,11433,or,15,F,Margaret,"Tony graded the midterm or the final, and he did not grade both",think,NonProj,Does Amanda think that Tony graded the midterm or the final?,NA
+435,main,NA,control4,NA,0.03,6134,NA,16,M,Paul,Vanessa is good at math,control,control,Is Vanessa good at math?,NA
+435,main,lb,12,Melissa,0.24,11833,or,17,M,Steven,Josh drank coffee or tea or both,suggest,C,Did Melissa suggest that Josh drank coffee or tea?,NA
+435,main,ub,9,Andrew,0.49,37649,or,18,F,Susan,"Grace stole a laptop or a calculator, and she did not steal both",say,C,Did Andrew say that Grace stole a laptop or a calculator?,NA
+435,main,lb,7,Kevin,0.43,22434,or,19,M,Richard,Isabella ate cake or pie or both,discover,NonProj,Did Kevin discover that Isabella ate cake or pie?,NA
+435,main,ub,5,Barbara,0.33,24233,some,20,F,Karen,"Frank graded some of the math problems, and he did not grade all of them",inform_Sam,C,Did Barbara inform Sam that Frank graded some of the math problems?,NA
+435,main,ub,10,Tina,0.62,10283,or,21,M,Kenneth,"Jayden solved the crossword or the Rubik's cube, and he did not solve both",prove,C,Did Tina prove that Jayden solved the crossword or the Rubik's cube?,NA
 178,main,lb,8,Brian,0.98,41366,or,4,F,Linda,Emily failed math or science or both,inform_Sam,C,Did Brian inform Sam that Emily failed math or science?,NA
 178,main,NA,control2,NA,0,13978,NA,5,F,Nancy,Mary's aunt is sick,control,control,Is Mary's aunt sick?,NA
 178,main,ub,2,Scott,0,19949,some,6,M,George,"Josie failed some of the courses, and she did not fail all of them",establish,NonProj,Did Scott establish that Josie failed some of the courses?,NA
@@ -6371,6 +6407,24 @@ workerid,proliferate.condition,condition,item_id,matrix_subject,response,rt,scal
 100,main,NA,control4,NA,0.01,4821,NA,19,F,Nancy,Vanessa is good at math,control,control,Is Vanessa good at math?,NA
 100,main,lb,9,Andrew,0.01,2966,or,20,F,Susan,Grace stole a laptop or a calculator or both,prove,C,Did Andrew prove that Grace stole a laptop or a calculator?,NA
 100,main,lb,6,Rachel,0,3987,some,21,F,Dorothy,Jackson drank at least some of the sodas,think,NonProj,Does Rachel think that Jackson drank some of the sodas?,NA
+434,main,lb,2,Scott,0.8,9815,some,4,F,Donna,Josie failed at least some of the courses,discover,NonProj,Did Scott discover that Josie failed some of the courses?,NA
+434,main,ub,5,Barbara,0.91,7989,some,5,F,Susan,"Frank graded some of the math problems, and he did not grade all of them",confirm,C,Did Barbara confirm that Frank graded some of the math problems?,NA
+434,main,lb,3,Justin,0.95,11291,some,6,F,Nancy,Emma stole at least some of the office supplies,acknowledge,C,Did Justin acknowledge that Emma stole some of the office supplies?,NA
+434,main,lb,7,Kevin,0.6,11649,or,7,M,David,Isabella ate cake or pie or both,reveal,NonProj,Did Kevin reveal that Isabella ate cake or pie?,NA
+434,main,ub,12,Melissa,0.63,7347,or,8,F,Ashley,"Josh drank coffee or tea, and he did not drink both",suggest,C,Did Melissa suggest that Josh drank coffee or tea?,NA
+434,main,NA,control1,NA,0.27,6139,NA,9,F,Dorothy,Zack is coming to the meeting tomorrow,control,control,Is Zack coming to the meeting tomorrow?,NA
+434,main,ub,6,Rachel,0.92,9228,some,10,M,George,"Jackson drank some of the sodas, and he did not drink all of them",know,NonProj,Does Rachel know that Jackson drank some of the sodas?,NA
+434,main,ub,10,Tina,0.17,11512,or,11,M,Christopher,"Jayden solved the crossword or the Rubik's cube, and he did not solve both",prove,C,Did Tina prove that Jayden solved the crossword or the Rubik's cube?,NA
+434,main,NA,control2,NA,0.04,4350,NA,12,M,Matthew,Mary's aunt is sick,control,control,Is Mary's aunt sick?,NA
+434,main,ub,4,Janice,0.28,6936,some,13,M,Kenneth,"Danny solved some of the puzzles, and he did not solve all of them",establish,NonProj,Did Janice establish that Danny solved some of the puzzles?,NA
+434,main,NA,control6,NA,0.5,5427,NA,14,F,Linda,Hendrick's car was expensive,control,control,Was Hendrick's car expensive?,NA
+434,main,NA,control3,NA,0.58,4047,NA,15,F,Betty,Todd played football in high school,control,control,Did Todd play football in high school?,NA
+434,main,NA,control4,NA,0.23,4146,NA,16,F,Helen,Vanessa is good at math,control,control,Is Vanessa good at math?,NA
+434,main,lb,1,Patrick,0.38,6938,some,17,M,Steven,Mary ate at least some of the cupcakes,think,NonProj,Does Patrick think that Mary ate some of the cupcakes?,NA
+434,main,NA,control5,NA,0.49,5081,NA,18,F,Lisa,Madison had a baby,control,control,Did Madison have a baby?,NA
+434,main,lb,8,Brian,0.85,7922,or,19,M,Paul,Emily failed math or science or both,inform_Sam,C,Did Brian inform Sam that Emily failed math or science?,NA
+434,main,ub,9,Andrew,0.45,7485,or,20,M,Robert,"Grace stole a laptop or a calculator, and she did not steal both",say,C,Did Andrew say that Grace stole a laptop or a calculator?,NA
+434,main,lb,11,Amanda,0.89,5657,or,21,F,Michelle,Tony graded the midterm or the final or both,hear,C,Did Amanda hear that Tony graded the midterm or the final?,NA
 241,main,ub,8,Brian,0.02,23459,or,4,F,Jessica,"Emily failed math or science, and she did not fail both",establish,NonProj,Did Brian establish that Emily failed math or science?,NA
 241,main,ub,12,Melissa,0.02,17367,or,5,F,Kimberly,"Josh drank coffee or tea, and he did not drink both",inform_Sam,C,Did Melissa inform Sam that Josh drank coffee or tea?,NA
 241,main,lb,11,Amanda,0,12864,or,6,F,Ashley,Tony graded the midterm or the final or both,hear,C,Did Amanda hear that Tony graded the midterm or the final?,NA

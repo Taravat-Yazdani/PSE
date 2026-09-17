@@ -64,7 +64,9 @@ for (file_name in file_names) {
 ```
 
 # II. 2nd Stage of Data Cleaning: Removal of Unapproved Participant Records
-I compared the 360 approved participant IDs in the Prolific demographic file with the participant IDs in the Proliferate worker-ID records. This comparison identified six worker IDs that were not linked to an approved Prolific participant: 419, 400, 397, 220, 364, and 261. I removed all rows corresponding to these six worker IDs from PSE main dataset files to ensure that only records linked to approved Prolific participants remained.This left 357 worker-ID records in my PSE main dataset. 
+I compared the 360 approved participant IDs in the Prolific demographic file with the participant IDs in the Proliferate worker-ID records. This comparison identified six worker IDs that were not linked to an approved Prolific participant: 419, 400, 397, 220, 364, and 261. I removed all rows corresponding to these six worker IDs from PSE main dataset files to ensure that only records linked to approved Prolific participants remained.This left 357 worker-ID records in my PSE main dataset.
+
+\textcolor{red}{\textbf{After this stage, we recruited three additional participants to reach our preregistered sample of 360 participants.}}
 
 ```{r}
 # Read the Prolific download and keep approved participants only
@@ -186,11 +188,13 @@ for (file_name in file_names) {
 ```
 
 
+
 # III. 3rd Stage of Data Exclusion: Control-Item Performance and Response Variability
 
 Following **Degen and Tonhauser (2022)** and consistent with the exclusion criteria reported in my **IRB protocol**, participants will be excluded if their **mean response across the six control items is more than two standard deviations above the group mean** or if the **variance of their responses across all trials is more than two standard deviations below the group mean variance**.
 
-For each of the **357 participants** remaining after the first two cleaning stages, I calculated two values: a control mean and a response variance. The control mean is the participant’s average response across the six control items, for which the expected answer is close to No (0); for example, a control mean of 0.99 means that the participant responded close to Yes on nearly all six controls. Response variance measures how much that participant’s ratings changed across all 18 trials: a very low value, such as 0.01, means they gave almost the same slider response repeatedly, whereas a larger value, such as 0.20, indicates that their responses varied across items. I then compared each participant’s control mean and response variance with the corresponding group mean and group standard deviation across all participants. Participants were excluded if their control mean was more than 2 SD above the group mean or if their response variance was more than 2 SD below the group mean variance. In the current data, the excluded participants met the control-response criterion; no participant met the low-variance criterion.
+For each of the **360 participants** after the first two cleaning stages, I calculated two values: a control mean and a response variance. The control mean is the participant’s average response across the six control items, for which the expected answer is close to No (0); for example, a control mean of 0.99 means that the participant responded close to Yes on nearly all six controls. Response variance measures how much that participant’s ratings changed across all 18 trials: a very low value, such as 0.01, means they gave almost the same slider response repeatedly, whereas a larger value, such as 0.20, indicates that their responses varied across items. I then compared each participant’s control mean and response variance with the corresponding group mean and group standard deviation across all participants. Participants were excluded if their control mean was more than 2 SD above the group mean or if their response variance was more than 2 SD below the group mean variance. In the current data, the excluded participants met the control-response criterion; no participant met the low-variance criterion.
+
 
 ```{r}
 # Folders for input and cleaned output
@@ -464,7 +468,7 @@ knitr::kable(
 All analyses reported from this point onward are based on the final cleaned dataset after applying all exclusion criteria.
 
 ## \textcolor{blue}{\textbf{A.Number of Participants }}
-Table 6 below reports the number of unique worker IDs and unique participant identifiers in the final cleaned dataset. As noted in Section III, worker ID #344 was assigned to two different participants and therefore had 36 trial rows rather than the expected 18 rows (see Table 7). To distinguish these two participants, I created a participant identifier by combining **workerid** and **time_in_minutes** (see Table 8). This identifier was used for participant-level summaries and analyses so that the two sessions associated with worker ID #344 were treated as separate participants. The final cleaned dataset includes **334 participants**.
+Table 6 below reports the number of unique worker IDs and unique participant identifiers in the final cleaned dataset. As noted in Section III, worker ID #344 was assigned to two different participants and therefore had 36 trial rows rather than the expected 18 rows (see Table 7). To distinguish these two participants, I created a participant identifier by combining **workerid** and **time_in_minutes** (see Table 8). This identifier was used for participant-level summaries and analyses so that the two sessions associated with worker ID #344 were treated as separate participants. The final cleaned dataset includes **337 participants**.
 
 ```{r}
 # Read the final cleaned merged file
@@ -1672,7 +1676,8 @@ figure1 <- ggplot(
     axis.text.x = element_text(
       angle = 50,
       hjust = 1,
-      vjust = 1
+      vjust = 1,
+      face = "bold"
     ),
     
     legend.position = "bottom",
@@ -1709,6 +1714,16 @@ figure1 <- ggplot(
 
 # Display Figure 1
 figure1
+
+# Save Figure 1 as a separate poster-ready image
+ggsave(
+  filename = "/Users/taravat/Desktop/Figure 1 Mean Certainty Ratings by Predicate.png",
+  plot = figure1,
+  width = 9,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
 ```
 
 \clearpage
